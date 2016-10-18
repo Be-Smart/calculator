@@ -31,6 +31,10 @@ module.exports = {
 			}
 		},
 		{
+			test:   /\.pug$/,
+			loader: "pug"
+		},
+		{
 			test:   /\.sass$/,
 			loader: ExtractTextPlugin.extract('style', 'css-loader!resolve-url!sass-loader?sourceMap')
 		}]
