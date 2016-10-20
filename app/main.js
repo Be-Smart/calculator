@@ -2,4 +2,4 @@
 
 import Calculator from './calculator';
 
-const calculator = new Calculator( document.querySelector('.wrap') );
+new Calculator( document.querySelector('.wrap') );

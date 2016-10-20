@@ -43,7 +43,7 @@ export default class Logic {
 				storage = '0';
 			}
 
-		} else if (elementDataSet && elementDataSet !== 'equal') {
+		} else if (elementDataSet === 'op' || elementDataSet === 'dot') {
 
 			if (lastSign === '=') {
 				this._cacheValue = storage += elementValue;
@@ -81,7 +81,7 @@ export default class Logic {
 
 		}
 
-		if (lastSign !== '=') this._cacheValue += elementValue;
+		if (lastSign !== '=' && elementDataSet !== 'reset') this._cacheValue += elementValue;
 
 		return storage;
 	}

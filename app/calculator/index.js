@@ -22,6 +22,8 @@ export default class Calculator {
 		let value = event.target.value;
 		let dataSet = event.target.dataset.btnType;
 
+		if (!dataSet) return;
+
 		this._displayResult.innerHTML = this._equation = this._logic.buttonsHandler(value, dataSet, this._equation);
 
 		if (dataSet === 'equal') {
