@@ -12,11 +12,15 @@ export default class DragNdrop {
 	_onMousedown (event) {
 		if (event.which != 1) return;
 
-		let elem = event.target.closest('.draggable');
+		let targetBtn = event.target.dataset.btnType;
+		let targetElem = event.target.dataset.element;
+		let calcContainer = event.target.closest('[data-container]');
+		let component = event.target.closest('[data-component="calculator"]');
 
-		if (!elem) return;
+		if (!calcContainer || targetBtn || targetElem) return;
 
-		this._dragObj.elem = elem;
+		this._dragObj.component = component;
+		this._dragObj.calcContainer = calcContainer;
 
 		this._dragObj.downX = event.pageX;
 		this._dragObj.downY = event.pageY;
@@ -24,8 +28,8 @@ export default class DragNdrop {
 	}
 
 	_onMousemove (event) {
-		if (!this._dragObj.elem) return;
-		let elem = this._dragObj.elem;
+		if (!this._dragObj.component) return;
+		let component = this._dragObj.component;
 
 		if (this._dragObj.start) {
 			let moveX = event.pageX - this._dragObj.downX;
@@ -35,19 +39,17 @@ export default class DragNdrop {
 
 			this._dragObj.start = false;
 
-			let coords = this._getCoords(elem);
+			let coords = this._getCoords(this._dragObj.calcContainer);
 			this._dragObj.shiftX = this._dragObj.downX - coords.left;
 			this._dragObj.shiftY = this._dragObj.downY - coords.top;
 
-			document.body.insertBefore(elem, document.body.lastElementChild);
-			elem.style.zIndex = 9999;
-			elem.style.position = 'absolute';
+			document.body.appendChild(component);
+			component.style.zIndex = 9999;
+			component.style.position = 'absolute';
 		}
 
-		elem.style.left = event.pageX - this._dragObj.shiftX + 'px';
-		elem.style.top = event.pageY - this._dragObj.shiftY + 'px';
-
-		return false;
+		component.style.left = event.pageX - this._dragObj.shiftX + 'px';
+		component.style.top = event.pageY - this._dragObj.shiftY + 'px';
 	}
 
 	_onMouseup () {

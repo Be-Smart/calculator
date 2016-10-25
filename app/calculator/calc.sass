@@ -6,11 +6,11 @@
 body
 	background-color: #818181
 
-.wrap
-	height: 100vh
-	display: flex
-	flex-direction: column
-	justify-content: center
+// .wrap
+// 	height: 100vh
+// 	display: flex
+// 	flex-direction: column
+// 	justify-content: center
 
 .calc
 	height: 410px
@@ -20,6 +20,11 @@ body
 	border-radius: 20px
 	box-shadow: 7px 10px 34px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px #89847e
 	margin: auto
+	cursor: move
+	-webkit-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
 
 	&__entrybox
 		width: 85%
@@ -29,6 +34,7 @@ body
 		border-radius: 6px
 		background-color: #c3c2ab
 		font-size: 30px
+		cursor: initial
 
 	&__entry
 		width: 100%

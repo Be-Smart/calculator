@@ -2,5 +2,6 @@
 
 import Calculator from './calculator';
 
-new Calculator( document.querySelector('.wrap'), 'first' );
-new Calculator( document.querySelector('.wrap'), 'second' );
+let calcComponents = document.querySelectorAll('[data-component="calculator"]');
+
+Array.from(calcComponents).forEach( el => new Calculator(el) );
