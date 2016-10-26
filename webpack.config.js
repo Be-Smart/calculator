@@ -12,7 +12,7 @@ module.exports = {
 	},
 
 	output: {
-		path: __dirname + '/public',
+		path: __dirname,
 		publicPath: '/',
 		filename: '[name].js',
 		library: '[name]'
@@ -29,6 +29,10 @@ module.exports = {
 			query: {
 				presets: ['es2015']
 			}
+		},
+		{
+			test:   /\.pug$/,
+			loader: "pug"
 		},
 		{
 			test:   /\.sass$/,
